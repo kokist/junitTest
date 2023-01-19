@@ -193,6 +193,28 @@ class JudgeUtilsTest {
 	// 合格条件：false
 	@Test
 	public void testIsRegisterdAge_17歳_プレイ不可() {
+		// 事前処理(Mock)
+		Calendar cal = Calendar.getInstance();
+		cal.clear();
+		cal.set(Calendar.YEAR, 2017);
+		cal.set(Calendar.MONTH, Calendar.APRIL);
+		cal.set(Calendar.DAY_OF_MONTH, 01);
+		Date date = cal.getTime();
+		MockCurrentTime mockTime = new MockCurrentTime(date);
 
+		// 引数
+		Calendar birthcal = Calendar.getInstance();
+		birthcal.clear();
+		birthcal.set(Calendar.YEAR, 2000);
+		birthcal.set(Calendar.MONTH, Calendar.APRIL);
+		birthcal.set(Calendar.DAY_OF_MONTH, 01);
+		Date birthDay = birthcal.getTime();
+
+		// 実行
+		boolean actual = target.isBillingAge(birthDay);
+
+		//結果
+		assertFalse(actual);
+		mockTime.tearDown();
 	}
 }
