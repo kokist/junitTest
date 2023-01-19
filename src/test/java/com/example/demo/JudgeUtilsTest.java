@@ -211,8 +211,8 @@ class JudgeUtilsTest {
 		Date birthDay = birthcal.getTime();
 
 		// 実行
-		boolean actual = target.isBillingAge(birthDay);
-
+		boolean actual = target.isRegisterdAge(birthDay);
+		
 		//結果
 		assertFalse(actual);
 		mockTime.tearDown();
